@@ -5,7 +5,10 @@ mat-form-field {
     border-radius: 5px;
     padding: 5px;
 }
-
+.invalid{
+    color: #656464;
+    background-color:rgb(207, 206, 206);
+}
 input,
 textarea {
     color: #000;

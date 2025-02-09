@@ -8,14 +8,13 @@ import { ValidatorsComponent } from '../validators/validators.component';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent  {
   type: string = '';
-
-
-  ngOnInit(): void {
-  }
   form: FormGroup;
   fields: FormArray;
+
+
+ 
 
   constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this.fields = this.fb.array([]);
@@ -24,20 +23,20 @@ export class FormComponent implements OnInit {
 
   addField(type: string) {
     this.type = type
-      this.openDialogue(type)
+    this.openDialogue(type)
 
-    
+
   }
-  openDialogue(type1:string) {
+  openDialogue(type1: string) {
     let addModel = this.dialog.open(ValidatorsComponent, {
       width: '80%',
       height: '550px',
-      data: {type:type1}
+      data: { type: type1 }
     });
 
     addModel.afterClosed().subscribe((input) => {
       if (input) {
-        this.add(input.validators,input.label);
+        this.add(input.validators, input.label);
       }
     });
   }
@@ -45,10 +44,11 @@ export class FormComponent implements OnInit {
 
 
 
-  add(validatorsArr: any,label:string) {
+  add(validatorsArr: any, label: string) {
     this.fields.push(new FormGroup({
       label: new FormControl(label, []),
       type: new FormControl(this.type, []),
+
       value: new FormControl('', validatorsArr),
     }));
   }
@@ -57,7 +57,6 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.fields)
     if (this.form.valid) {
       console.log('Form Submitted:', this.form.value);
       alert('Form submitted successfully!');

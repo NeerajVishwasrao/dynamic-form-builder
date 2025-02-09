@@ -1,13 +1,12 @@
-<p>Validators work!</p>
 
 <mat-card class="form-container">
-    <mat-card-title>Angular Material Form</mat-card-title>
+    <mat-card-title> validations for input</mat-card-title>
 
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="outline">
-            <mat-label>Enter Label</mat-label>
-            <input matInput formControlName="label" placeholder="Enter label">
+            <mat-label>Enter Question</mat-label>
+            <input matInput formControlName="label" placeholder="Enter question">
         </mat-form-field>
         <ng-container *ngIf="type!='checkbox'&&type!='radio'">
             <mat-form-field appearance="outline">

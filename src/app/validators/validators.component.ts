@@ -7,26 +7,24 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './validators.component.html',
   styleUrls: ['./validators.component.css']
 })
-export class ValidatorsComponent implements OnInit {
+export class ValidatorsComponent  {
   validatosArr: any = []
   myForm: FormGroup;
 type:string='';
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private ref: MatDialogRef<ValidatorsComponent>) {
     this.type=data.type;
     this.myForm = new FormGroup({
       label: new FormControl('', []),
-      maxLength: new FormControl('', []),
-      minLength: new FormControl('', []),
+      maxLength: new FormControl(20, []),
+      minLength: new FormControl(1, []),
       required: new FormControl(false, [])
 
     });
   }
 
   onSubmit() {
-    console.log(this.myForm.value.minLength);
-    console.log(this.myForm.value.maxLength);
-
-console.log(this.myForm.value.required);
+  
 
     if (this.myForm.value.required) {
       this.validatosArr.push(Validators.required);
@@ -38,7 +36,6 @@ console.log(this.myForm.value.required);
       this.validatosArr.push(Validators.maxLength(this.myForm.value.maxLength));
     }
 
-    console.log(this.myForm.value);
 
     let output = {
       validators: this.validatosArr,
@@ -52,7 +49,6 @@ console.log(this.myForm.value.required);
     this.ref.close()
   }
 
-  ngOnInit(): void {
-  }
+ 
 
 }

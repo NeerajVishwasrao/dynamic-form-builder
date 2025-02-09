@@ -23,3 +23,6 @@ mat-form-field {
     justify-content: center;
     margin-top: 16px;
 }
+mat-label{
+    color: white;
+}
