@@ -24,13 +24,15 @@ export class FormComponent implements OnInit {
 
   addField(type: string) {
     this.type = type
-    this.openDialogue()
+      this.openDialogue(type)
+
+    
   }
-  openDialogue() {
+  openDialogue(type1:string) {
     let addModel = this.dialog.open(ValidatorsComponent, {
       width: '80%',
       height: '550px',
-      data: {}
+      data: {type:type1}
     });
 
     addModel.afterClosed().subscribe((input) => {

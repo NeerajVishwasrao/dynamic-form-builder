@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-validators',
@@ -10,19 +10,23 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ValidatorsComponent implements OnInit {
   validatosArr: any = []
   myForm: FormGroup;
-
-  constructor(private ref: MatDialogRef<ValidatorsComponent>) {
+type:string='';
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private ref: MatDialogRef<ValidatorsComponent>) {
+    this.type=data.type;
     this.myForm = new FormGroup({
       label: new FormControl('', []),
       maxLength: new FormControl('', []),
       minLength: new FormControl('', []),
-      required: new FormControl(true, [])
+      required: new FormControl(false, [])
 
     });
   }
 
   onSubmit() {
     console.log(this.myForm.value.minLength);
+    console.log(this.myForm.value.maxLength);
+
+console.log(this.myForm.value.required);
 
     if (this.myForm.value.required) {
       this.validatosArr.push(Validators.required);
@@ -31,7 +35,7 @@ export class ValidatorsComponent implements OnInit {
       this.validatosArr.push(Validators.minLength(this.myForm.value.minLength));
     }
     if (this.myForm.value.maxLength > 0) {
-      this.validatosArr.push(Validators.maxLength(this.myForm.value.minLength));
+      this.validatosArr.push(Validators.maxLength(this.myForm.value.maxLength));
     }
 
     console.log(this.myForm.value);

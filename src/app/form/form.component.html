@@ -20,8 +20,10 @@
                 </mat-form-field>
 
                 <span *ngIf="field.get('value')?.hasError('required')">This field is required</span>
-                <span *ngIf="field.get('value')?.hasError('minlength')">min length is </span>
-                <span *ngIf="field.get('value')?.hasError('maxlength')">  Max length is {{ field.get('value')?.errors?.['maxlength']?.requiredLength }}
+                <span *ngIf="field.get('value')?.hasError('minlength')">min length is {{
+                    field.get('value')?.errors?.['minlength']?.requiredLength }} </span>
+                <span *ngIf="field.get('value')?.hasError('maxlength')"> Max length is {{
+                    field.get('value')?.errors?.['maxlength']?.requiredLength }}
                 </span>
 
                 <label *ngIf="field.value.type === 'checkbox'">
