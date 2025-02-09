@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  toggleSideBar() {
+    this.opened = !this.opened
+  }
+
+  opened = false; // This controls the state of the sidenav
+  isExpanded: boolean = true;
+
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  ngOnInit() {
+  }
+
   title = 'dynamic-form-builder';
 }

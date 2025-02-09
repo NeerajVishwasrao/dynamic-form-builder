@@ -1,0 +1,97 @@
+mat-form-field {
+    width: 100%;
+    background: #f9f9f9;
+    /* Light gray background */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input,
+textarea {
+    color: #000;
+    /* Black text */
+    background-color: #fff;
+    /* White background */
+    border: 1px solid #ccc;
+    /* Light gray border */
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+span {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+mat-card {
+    color: black;
+    background-color: white;
+}
+
+.mat-card-actions button {
+    margin: 5px;
+}
+
+.mat-paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mat-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-mini-fab {
+    margin: 0 5px;
+}
+
+.small-input {
+    width: 150px;
+    /* Adjust width */
+    height: 30px;
+    /* Adjust height */
+    font-size: 14px;
+    /* Reduce text size */
+    padding: 4px 8px;
+    /* Reduce padding */
+}
+
+.small-mat-form {
+    width: 150px;
+    /* Reduce width */
+    font-size: 12px;
+    /* Reduce text size */
+}
+
+.small-mat-form .mat-select-trigger {
+    min-height: 30px;
+    /* Reduce height */
+    padding: 4px 8px;
+    /* Adjust padding */
+}
+
+.small-mat-form .mat-form-field-wrapper {
+    padding: 0px;
+    /* Remove extra padding */
+}
+
+.small-mat-form .mat-select {
+    font-size: 12px;
+    /* Reduce font size */
+}
+
+.small-mat-form .mat-option {
+    font-size: 12px;
+    /* Reduce dropdown option size */
+}

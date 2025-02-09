@@ -1,0 +1,45 @@
+<div class="backGround container">
+    <p>Form works!</p>
+    <div class="row">
+        <button mat-raised-button color="primary" class="col mx-1" (click)="addField('text')">Add Text Field</button>
+        <button mat-raised-button color="primary" class="col mx-1" (click)="addField('textarea')">Add Textarea</button>
+        <button mat-raised-button color="primary" class="col mx-1" (click)="addField('checkbox')">Add Checkbox</button>
+        <button mat-raised-button color="primary" class="col mx-1" (click)="addField('radio')">Add Radio</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div formArrayName="fields">
+            <div class="my-1" *ngFor="let field of fields.controls; let i = index" [formGroupName]="i">
+
+                <mat-form-field *ngIf="field.value.type === 'text' || field.value.type === 'textarea'">
+                    <label for="">{{field.value.label}}</label>
+                    <input matInput *ngIf="field.value.type === 'text'" formControlName="value"
+                        [placeholder]="field.value.label" />
+
+                    <textarea matInput *ngIf="field.value.type === 'textarea'" formControlName="value"></textarea>
+                </mat-form-field>
+
+                <span *ngIf="field.get('value')?.hasError('required')">This field is required</span>
+                <span *ngIf="field.get('value')?.hasError('minlength')">min length is </span>
+                <span *ngIf="field.get('value')?.hasError('maxlength')">  Max length is {{ field.get('value')?.errors?.['maxlength']?.requiredLength }}
+                </span>
+
+                <label *ngIf="field.value.type === 'checkbox'">
+                    <input type="checkbox" formControlName="value" /> {{ field.value.label }}
+                </label>
+
+                <label *ngIf="field.value.type === 'radio'">
+                    <input type="radio" formControlName="value" /> {{ field.value.label }}
+                </label>
+
+                <div class="actions">
+                    <button type="button" mat-raised-button color="warn" (click)="removeField(i)">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions my-3">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

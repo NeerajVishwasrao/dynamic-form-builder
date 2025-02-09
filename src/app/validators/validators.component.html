@@ -1,0 +1,35 @@
+<p>Validators work!</p>
+
+<mat-card class="form-container">
+    <mat-card-title>Angular Material Form</mat-card-title>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter Label</mat-label>
+            <input matInput formControlName="label" placeholder="Enter label">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Max Length</mat-label>
+            <input matInput formControlName="maxLength" type="number" placeholder="Enter max length">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Min Length</mat-label>
+            <input matInput formControlName="minLength" type="number" placeholder="Enter min length">
+        </mat-form-field>
+
+        <!-- Properly spaced Checkbox -->
+        <div class="checkbox-container">
+            <input class="mx-2" type="checkbox" formControlName="required" />   is required ?
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+    </form>
+</mat-card>
+
+<!-- Separate close button -->
+<div class="close-btn-container">
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+</div>
