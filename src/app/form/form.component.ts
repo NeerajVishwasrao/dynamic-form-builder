@@ -8,13 +8,18 @@ import { ValidatorsComponent } from '../validators/validators.component';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent  {
+export class FormComponent {
   type: string = '';
   form: FormGroup;
   fields: FormArray;
+  options = {
+    opt1: '',
+    opt2: '',
+    opt3: '',
+    opt4: ''
+  }
 
 
- 
 
   constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this.fields = this.fb.array([]);
@@ -36,7 +41,12 @@ export class FormComponent  {
 
     addModel.afterClosed().subscribe((input) => {
       if (input) {
-        this.add(input.validators, input.label);
+        this.options.opt1=input.options.opt1
+        this.options.opt2=input.options.opt2
+        this.options.opt3=input.options.opt3
+        this.options.opt4=input.options.opt4
+
+        this.add(input.validators, input.label, input.options);
       }
     });
   }
@@ -44,7 +54,7 @@ export class FormComponent  {
 
 
 
-  add(validatorsArr: any, label: string) {
+  add(validatorsArr: any, label: string, options: any) {
     this.fields.push(new FormGroup({
       label: new FormControl(label, []),
       type: new FormControl(this.type, []),

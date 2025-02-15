@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ValidatorsComponent } from './validators/validators.component';
+import {  MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ValidatorsComponent } from './validators/validators.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

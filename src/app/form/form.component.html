@@ -4,6 +4,8 @@
         <button mat-raised-button color="primary" class="col mx-1" (click)="addField('textarea')"> Textarea</button>
         <button mat-raised-button color="primary" class="col mx-1" (click)="addField('checkbox')"> Checkbox</button>
         <button mat-raised-button color="primary" class="col mx-1" (click)="addField('radio')"> Radio</button>
+        <button mat-raised-button color="primary" class="col mx-1" (click)="addField('option')">select option's</button>
+
     </div>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
@@ -33,6 +35,28 @@
                     <input type="radio" formControlName="value" /> {{ field.value.label }}
                 </label>
 
+                <ng-container *ngIf="field.value.type==='option'">
+                    <div> {{options.opt1}}
+                    </div>
+                    <mat-form-field>
+                        <!-- select any one option of following  -->
+                        <label>{{field.value.label}}</label>
+                        <mat-select style="background-color: rgb(122, 118, 118);" formControlName="value">
+                            <mat-option [value]="options.opt1">
+                                {{options.opt1}}
+                            </mat-option>
+                            <mat-option [value]="options.opt2">
+                                {{options.opt2}}
+                            </mat-option>
+                            <mat-option [value]="options.opt3">
+                                {{options.opt3}}
+                            </mat-option>
+                            <mat-option [value]="options.opt4">
+                                {{options.opt4}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
                 <div class="actions">
                     <button type="button" mat-raised-button color="warn" (click)="removeField(i)">Remove</button>
                 </div>
@@ -40,7 +64,8 @@
         </div>
 
         <div class="actions my-3">
-            <button mat-raised-button color="primary" [ngClass]="form.valid?'not':'invalid'"  type="submit">Submit</button>
+            <button mat-raised-button color="primary" [ngClass]="form.valid?'not':'invalid'"
+                type="submit">Submit</button>
         </div>
     </form>
 </div>
